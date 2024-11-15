@@ -42,6 +42,7 @@ ent         "ent"
 cad         "cad"
 si          "si"
 show        "show"
+concat      "concat"
 
 
 %%
@@ -55,6 +56,7 @@ show        "show"
 {cad}		              { COLUMNAS_SUMA; printf("CADENA: %s\n", yytext); return CADENA; }
 {si}			          { COLUMNAS_SUMA; printf("SI: %s\n", yytext); return SI; } 
 {show}                    { COLUMNAS_SUMA; printf("SHOW: %s\n", yytext); return SHOW; } 
+{concat}                  { COLUMNAS_SUMA; printf("CONCAT: %s\n", yytext); return CONCAT; } 
 
 {palabra}				  { COLUMNAS_SUMA; printf("PALABRA: %s\n", yytext); return PALABRA; }
 

@@ -1,0 +1,3 @@
+cad _hola -> hola/
+cad _chau/
+hola concat adios/.
