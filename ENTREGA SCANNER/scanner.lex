@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "parserJuan.tab.h"
+#include "parser.tab.h"
 
 
 #define BYTES_RENGLON          bytes += strlen(yytext);
