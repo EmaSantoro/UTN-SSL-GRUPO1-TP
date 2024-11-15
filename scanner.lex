@@ -13,6 +13,7 @@
 
 void error_alfabeto();
 void error_identificadores();
+void punto();
 int columnas = 0;
 int bytes = 0;
 int linea_en_bytes = 0;
@@ -72,6 +73,8 @@ show        "show"
 "["		   		          { COLUMNAS_SUMA; printf("CORCHIZQ: %s\n", yytext); return CORCHIZQ; }
 "]"						  { COLUMNAS_SUMA; printf("CORCHDER: %s\n", yytext); return CORCHDER; }
 
+
+"."						  { COLUMNAS_SUMA; punto(); }
 .						  { COLUMNAS_SUMA; error_alfabeto(); }
 
 %%
@@ -81,10 +84,17 @@ void error_identificadores(){
 	printf("\"%s\" no puede ser usado como identificador \n", yytext); 
 	printf("Los identificadores tienen que tener como maximo 16 caracteres y deben empezar con _ si es cadena o E si es entero\n");
 	printf("\n");
+	exit(1);
  }
 
 void error_alfabeto(){
 	printf("\n");
-	printf("Termino la lectura del archivo\n");
+    printf("\"%s\" no es parte del alfabeto del lenguaje \n", yytext); 
+    exit(1);
+}
+
+void punto(){
+    printf("\n");
+	printf("Termino la lectura del archivo correctamente\n");
     exit(1);
 }
