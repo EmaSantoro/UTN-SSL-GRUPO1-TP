@@ -31,8 +31,6 @@ Mayuscula	       [A-Z]+
 Minuscula	       [a-z]+
 palabra		       ({Minuscula}|{Mayuscula})+
 
-COND    (==)
-
 IdentificadorCad       _[A-Za-z]*
 IdentificadorEnt        E[0-9]*
 
@@ -40,7 +38,6 @@ FinDeSentencia 	    ["/"]
 
 ent         "ent"
 cad         "cad"
-si          "si"
 show        "show"
 concat      "concat"
 
@@ -54,15 +51,12 @@ concat      "concat"
 
 {ent}		              { COLUMNAS_SUMA; printf("ENTERO: %s\n", yytext); return ENTERO; }
 {cad}		              { COLUMNAS_SUMA; printf("CADENA: %s\n", yytext); return CADENA; }
-{si}			          { COLUMNAS_SUMA; printf("SI: %s\n", yytext); return SI; } 
 {show}                    { COLUMNAS_SUMA; printf("SHOW: %s\n", yytext); return SHOW; } 
 {concat}                  { COLUMNAS_SUMA; printf("CONCAT: %s\n", yytext); return CONCAT; } 
 
 {palabra}				  { COLUMNAS_SUMA; printf("PALABRA: %s\n", yytext); return PALABRA; }
 
 {NUM}					  { COLUMNAS_SUMA; printf("NUM: %s\n", yytext); return NUM; }
-
-{COND}					  { COLUMNAS_SUMA; printf("COND: %s\n", yytext); return COND; }
 
 {FinDeSentencia}          { COLUMNAS_SUMA; printf("FINSENTENCIA: %s\n", yytext); return FINSENTENCIA; }
 
@@ -71,10 +65,6 @@ concat      "concat"
 "\n"					  { COLUMNAS_SUMA; COLUMNAS_RESET; LINEA_BYTES; }
 
 [ \t]				      { COLUMNAS_SUMA; }
-
-"["		   		          { COLUMNAS_SUMA; printf("CORCHIZQ: %s\n", yytext); return CORCHIZQ; }
-"]"						  { COLUMNAS_SUMA; printf("CORCHDER: %s\n", yytext); return CORCHDER; }
-
 
 "."						  { COLUMNAS_SUMA; punto(); }
 .						  { COLUMNAS_SUMA; error_alfabeto(); }

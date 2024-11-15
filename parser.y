@@ -19,7 +19,7 @@ void yyerror(const char *s);
 
 /* declare tokens */
 
-%token CADENA ENTERO SI SHOW CONCAT
+%token CADENA ENTERO SHOW CONCAT
 %token IDENTIFICADORCAD 
 %token IDENTIFICADORENT
 %token FINSENTENCIA
@@ -29,7 +29,7 @@ void yyerror(const char *s);
 %token PALABRA 
 %token NUM
 %token ERROR
-%token CORCHIZQ CORCHDER
+
 
 %%
 
@@ -38,13 +38,10 @@ sentencias: sentencia
 
 sentencia: sentencia_inicio FINSENTENCIA;
 
-sentencia_inicio: condicional
-				| asignacion
+sentencia_inicio: asignacion
                 | show
                 | concatenar	
 				| crear_variable;
-
-condicional: SI condicion CORCHIZQ sentencias CORCHDER;
 
 asignacion: identificador ASIGNACION operador;
 
@@ -54,8 +51,6 @@ concatenar: PALABRA CONCAT PALABRA
 
 crear_variable: tipo identificador;
 			  
-condicion: operador COND operador;
-
 operador: PALABRA 
 		| NUM;
 
