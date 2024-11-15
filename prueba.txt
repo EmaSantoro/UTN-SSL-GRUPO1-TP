@@ -1,0 +1,6 @@
+cad _hola -> 123/
+cad _chau/
+ent E787/
+show hola/
+_hola -> chau/
+show adios/.
